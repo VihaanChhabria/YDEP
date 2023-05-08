@@ -1,10 +1,9 @@
 from pytube import Playlist
 import configparser
-from time import sleep
 
 def __init():
     config = configparser.ConfigParser()
-    config.read_file(open('DownloadClip\DownloadConfig.ini'))
+    config.read_file(open('VideoMaker\DownloadClip\DownloadConfig.ini'))
 
     global PLAYLIST_LINK
     PLAYLIST_LINK = config.get('PATHS', 'PLAYLIST_LINK')
@@ -57,4 +56,3 @@ def Get_Downloaded_Videos():
 def Get_Downloaded_Videos_Titles():
     return downloaded_videos_titles
 
-Download_Video()

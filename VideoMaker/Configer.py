@@ -5,11 +5,15 @@ from colorama import init as colorama_init
 from colorama import Fore
 from colorama import Style
 
+def save_file(path, config):
+    with open(path, 'w') as configfile:
+        config.write(configfile)
+
 colorama_init()
 
-Download_Config_Path = "DownloadClip\DownloadConfig.ini"
+Download_Config_Path = r"VideoMaker\DownloadClip\DownloadConfig.ini"
 Download_Config_Elements = [["AMOUNT_VIDEO"]]
-Upload_Config_Path = "SeleniumUpload\\UploadConfig.ini"
+Upload_Config_Path = r"VideoMaker\SeleniumUpload\UploadConfig.ini"
 Upload_Config_Elements = [["DESCRIPTION"], ["VIEW"], ["USERNAME"], ["PASSWORD"]]
 
 Config_Paths = [Download_Config_Path, Upload_Config_Path]
@@ -52,6 +56,6 @@ for ConfigFileNumber in range(len(Config_Files)):
 
 print("\nFinal Edits:")
 for ConfigFileNumber in range(len(Config_Files)):
+    save_file(Config_Paths[ConfigFileNumber], Config_Files[ConfigFileNumber])
     for element in Config_Elements[ConfigFileNumber]:
         print(f"{element[0]} = {element[1]}")
-
