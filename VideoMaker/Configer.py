@@ -1,5 +1,7 @@
 from configparser import ConfigParser
 from getpass import getpass
+import os
+from wget import download
 
 def save_file(path, config):
     with open(path, 'w') as configfile:
@@ -9,6 +11,8 @@ Download_Config_Path = r"VideoMaker\DownloadClip\DownloadConfig.ini"
 Download_Config_Elements = [["AMOUNT_VIDEO"]]
 Upload_Config_Path = r"VideoMaker\SeleniumUpload\UploadConfig.ini"
 Upload_Config_Elements = [["DESCRIPTION"], ["VIEW"], ["USERNAME"], ["PASSWORD"]]
+
+Edit_Clip_Config_Path = r"VideoMaker\EditYoutubeClip\EditClipConfig.ini"
 
 Config_Paths = [Download_Config_Path, Upload_Config_Path]
 
@@ -26,6 +30,19 @@ Upload_Config = ConfigParser()
 Upload_Config.read(Upload_Config_Path)
 Config_Files.append(Upload_Config)
 
+Edit_Clip_Config = ConfigParser()
+Edit_Clip_Config.read(Edit_Clip_Config_Path)
+
+if not ((Edit_Clip_Config.getboolean("PATHS", "CLIP_BACK_DOWNLOADED"))) and (input("Download Background Video? (y/n) ") == "y"):
+    print("Downloading Background Video...")
+    
+    download('https://www.googleapis.com/drive/v3/files/1-itLfmBfVW18XaIj0h5GWc5X-n478h9k?alt=media&key=AIzaSyAA9ERw-9LZVEohRYtCWka_TQc6oXmvcVU&supportsAllDrives=True')
+    os.rename(os.path.abspath("1-itLfmBfVW18XaIj0h5GWc5X-n478h9k"), "VideoMaker\EditYoutubeClip\Clips\BackgroundVideo.mp4")
+    
+    Edit_Clip_Config["PATHS"]["CLIP_BACK_DOWNLOADED"] = "True"
+    save_file(Edit_Clip_Config_Path, Edit_Clip_Config)
+    print("Done Downloading Background Video.")
+
 
 for ConfigFileNumber in range(len(Config_Files)):
     for element in Config_Elements[ConfigFileNumber]:
@@ -35,7 +52,7 @@ for ConfigFileNumber in range(len(Config_Files)):
         if edit_confirmation.lower() == "y":
             if element[0] == "PASSWORD":
                 print("in")
-                edit_change = getpass(f"What would you like {element[0]} to be changed to?" )
+                edit_change = getpass(f"What would you like {element[0]} to be changed to? (GetPass) " )
             else:
                 edit_change = input(f"What would you like {element[0]} to be changed to? ")
             print("Saving...")
