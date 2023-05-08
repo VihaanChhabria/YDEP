@@ -11,8 +11,8 @@ import os
 
 listvideoThread = []
 
-downloaded_clips = "DownloadClip\Downloaded"
-cut_clips = "EditYoutubeClip\Clips\OutputVideos"
+downloaded_clips = "VideoMaker\DownloadClip\Downloaded"
+cut_clips = "VideoMaker\EditYoutubeClip\Clips\OutputVideos"
 
 def DeleteFilesInPath(dir):
     for file in os.scandir(dir):
