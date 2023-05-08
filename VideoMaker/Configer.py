@@ -1,15 +1,9 @@
 from configparser import ConfigParser
 from getpass import getpass
 
-from colorama import init as colorama_init
-from colorama import Fore
-from colorama import Style
-
 def save_file(path, config):
     with open(path, 'w') as configfile:
         config.write(configfile)
-
-colorama_init()
 
 Download_Config_Path = r"VideoMaker\DownloadClip\DownloadConfig.ini"
 Download_Config_Elements = [["AMOUNT_VIDEO"]]
@@ -51,11 +45,9 @@ for ConfigFileNumber in range(len(Config_Files)):
             
             print("Done.")
 
-
-
-
 print("\nFinal Edits:")
 for ConfigFileNumber in range(len(Config_Files)):
     save_file(Config_Paths[ConfigFileNumber], Config_Files[ConfigFileNumber])
     for element in Config_Elements[ConfigFileNumber]:
         print(f"{element[0]} = {element[1]}")
+
