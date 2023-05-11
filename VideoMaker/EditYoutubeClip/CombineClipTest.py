@@ -1,11 +1,11 @@
 from moviepy.editor import *
 import math
 from random import randint
-import configparser
+from configparser import ConfigParser
 
 def __init():
 
-    config = configparser.ConfigParser()
+    config = ConfigParser()
     config.read_file(open('VideoMaker\EditYoutubeClip\EditClipConfig.ini'))
 
     global DOWNLOAD_PATH
