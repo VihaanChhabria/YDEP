@@ -6,7 +6,7 @@ import configparser
 def __init():
 
     config = configparser.ConfigParser()
-    config.read_file(open('EditYoutubeClip\EditClipConfig.ini'))
+    config.read_file(open('VideoMaker\EditYoutubeClip\EditClipConfig.ini'))
 
     global DOWNLOAD_PATH
     DOWNLOAD_PATH = config.get('PATHS', 'DOWNLOAD_PATH')
@@ -32,7 +32,7 @@ def EditClip(CLIP_MAIN_PATH, thread_number):
     clipMain = VideoFileClip(CLIP_MAIN_PATH)
     clipBack = VideoFileClip(CLIP_BACK_PATH)
 
-    clipMain = clipMain.subclip(25, math.floor(clipMain.duration))
+    clipMain = clipMain.subclip(2, math.floor(clipMain.duration))
     clipMain = clipMain.resize(.45)
 
     clipVideoDuration = math.floor(clipMain.duration)
@@ -61,13 +61,8 @@ def EditClip(CLIP_MAIN_PATH, thread_number):
         final_clip.write_videofile(clip_final_path)
 
         cut_clips.append([thread_number, clip_final_path, clipsMade])
-        #cut_clips[clipsMade].append(thread_number)
-        #cut_clips[clipsMade].append(clipsMade)
 
 def Get_Cut_Clips():
     cut_clips.sort()
     return cut_clips
 
-#EditClip(r"C:\Users\vihaa\Python-Examples\VideoMaker\DownloadClip\Downloaded\FullVideo0.mp4", 0)
-#print(Get_Cut_Clips())
-#print(len(Get_Cut_Clips()))

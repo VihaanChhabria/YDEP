@@ -7,7 +7,7 @@ import configparser
 
 def __init():
     config = configparser.ConfigParser()
-    config.read_file(open(r'SeleniumUpload\UploadConfig.ini'))
+    config.read_file(open(r'VideoMaker\SeleniumUpload\UploadConfig.ini'))
 
     global VIEW
     VIEW = config.get('USER CHANGEABLE', 'VIEW')
