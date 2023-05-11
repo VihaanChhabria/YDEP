@@ -1,5 +1,17 @@
+import subprocess
+import sys
+
+libraries = ['configparser', 'getpass4', 'wget', 'selenium', 'pywin32', 'moviepy', 'yt-dlp']
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+for library in libraries:
+    install(library)
+
+
 from configparser import ConfigParser
-from getpass import getpass
+from getpass4 import getpass
 import os
 from wget import download
 

@@ -1,5 +1,4 @@
 import subprocess
-from pytube import Playlist
 import configparser
 
 def __init():
@@ -14,13 +13,20 @@ def __init():
 
     global DOWNLOAD_PATH
     DOWNLOAD_PATH = config.get('PATHS', 'DOWNLOAD_PATH')
-    DOWNLOAD_PATH = r"{}".format(DOWNLOAD_PATH)
+
+    global PLAYLISTURL_FILE
+    PLAYLISTURL_FILE = config.get('PATHS', 'PLAYLISTURL_PATH')
 
     global downloaded_videos
     downloaded_videos = []
 
     global downloaded_videos_titles
     downloaded_videos_titles = []
+
+    subprocess.run(f'yt-dlp --flat-playlist -i --print-to-file url {PLAYLISTURL_FILE} "{PLAYLIST_LINK}"')
+    global playlist
+    playlist = open(PLAYLISTURL_FILE).readlines()
+    f = open(PLAYLISTURL_FILE, 'w').close()
 
 def Get_Video(playlist, video):
         
@@ -41,8 +47,6 @@ def Download_Video():
     __init()
         
     videoNumber = AMOUNT_VIDEO
-
-    playlist = Playlist(PLAYLIST_LINK)
 
     video = 0
     tryed = 0
