@@ -1,3 +1,4 @@
+import subprocess
 from pytube import Playlist
 import configparser
 
@@ -22,16 +23,18 @@ def __init():
     downloaded_videos_titles = []
 
 def Get_Video(playlist, video):
-        st = playlist.videos[video].streams.get_highest_resolution()
         
-        name = r"FullVideo{}.mp4".format(video)
-        st.download(DOWNLOAD_PATH, name)
+        separator = ' ['
 
-        downloaded_videos.append(DOWNLOAD_PATH + name)
+        #yt-dlp https://www.youtube.com/watch?v=1PmJeP-TphM -P home:C:\Users\vihaa\YDEP\VideoMaker\DownloadClip\Downloaded\ -o "test video.%(ext)s"
 
-        #sleep(7)
+        name = r"FullVideo{}".format(video)
 
-        downloaded_videos_titles.append(playlist.videos[video].title)
+        subprocess.run(f'yt-dlp {playlist[video]} -P home:{DOWNLOAD_PATH} -o "{name}.%(ext)s"')
+
+        downloaded_videos.append(DOWNLOAD_PATH + name + ".mp4")
+
+        downloaded_videos_titles.append((subprocess.getoutput(f'yt-dlp --print filename {playlist[video]}')).split(separator, 1)[0])
 
 
 def Download_Video():
@@ -42,11 +45,14 @@ def Download_Video():
     playlist = Playlist(PLAYLIST_LINK)
 
     video = 0
+    tryed = 0
 
     while video < videoNumber:
         try:
             Get_Video(playlist, video)
         except:
+            print(f"failed, tried {tryed} times, video {video}")
+            tryed = tryed + 1
             continue
         video = video + 1
 
