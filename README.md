@@ -1,5 +1,6 @@
 # YDEP
 Youtube Downloader Editor Poster
+
 **Downloads** a video of Bluey, **Edits** the video into 60 second clips in the resolution of a phone, **Posts** the videos on **Youtube** all automatically.
 
 ## Disclaimers
@@ -10,6 +11,7 @@ Youtube Downloader Editor Poster
 ## Requirements
 
 - Python 3.10
+- Internet Connection
 
 ## Installation
 
