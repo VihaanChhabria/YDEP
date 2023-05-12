@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 import win32com.client
 import configparser
+import os
 
 def __init():
     config = configparser.ConfigParser()
@@ -105,6 +106,9 @@ def __InputVideo(UPLOAD_VIDEO_PATH):
 
 
 def Upload_Video(UPLOAD_VIDEO_PATH, TITLE):
+    print(UPLOAD_VIDEO_PATH)
+    UPLOAD_VIDEO_PATH = os.path.abspath(UPLOAD_VIDEO_PATH)
+    print(UPLOAD_VIDEO_PATH)
 
     __init()
 
@@ -120,10 +124,13 @@ def Upload_Video(UPLOAD_VIDEO_PATH, TITLE):
 
     __InputVideo(UPLOAD_VIDEO_PATH)
 
+    time.sleep(10)
+
     __FillVideoInfo(TITLE)
 
     for button_pressed in range(3):
-        time.sleep(1)
+        print("in")
+        time.sleep(0.5)
         __ClickElement(By.ID, NEXT_BUTTON)
 
     __ClickElement(By.XPATH, VIEW_XPATH)

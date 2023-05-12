@@ -19,8 +19,8 @@ def DeleteFilesInPath(dir):
         os.remove(file.path)
 
 def main():
-    DeleteFilesInPath(downloaded_clips)
     DeleteFilesInPath(cut_clips)
+    DeleteFilesInPath(downloaded_clips)
 
     sleep(5)
 
@@ -42,17 +42,21 @@ def main():
     for title_number in range(len(downloaded_clips_titles)):
         for cut_clip_info in cut_clips_list:
             if cut_clip_info[0] == title_number:
-                Upload_Video(cut_clip_info[1], f"{downloaded_clips_titles[cut_clip_info[0]]} - Part {cut_clip_info[2]}")
+                Upload_Video(cut_clip_info[1], f"{downloaded_clips_titles[cut_clip_info[0]]} - Part {cut_clip_info[2]+1}")
 
     #for cut_clip_info in range(len(cut_clips_list)):
     #    Upload_Video(cut_clips_list[cut_clip_info][1], f"{Get_Downloaded_Videos_Titles()[cut_clip_info][0]} - Part {cut_clip_info[1]}")
 
     print("done")
 
-    sleep(10)
+    sleep(20)
 
-    DeleteFilesInPath(downloaded_clips)
-    DeleteFilesInPath(cut_clips)
+    try:
+        DeleteFilesInPath(cut_clips)
+        DeleteFilesInPath(downloaded_clips)
+    except:
+        DeleteFilesInPath(cut_clips)
+        DeleteFilesInPath(downloaded_clips)
 
 if __name__ == "__main__":
     main()
