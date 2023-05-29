@@ -76,11 +76,11 @@ def __Login():
 
     time.sleep(3)
 
-    __FillElement(By.XPATH, YOUTUBE_LOGIN_USERNAME_XPATH, "chhabria.vihaan2@gmail.com")
+    __FillElement(By.XPATH, YOUTUBE_LOGIN_USERNAME_XPATH, USERNAME)
 
     __ClickElement(By.XPATH, YOUTUBE_LOGIN_NEXT_XPATH)
 
-    __FillElement(By.XPATH, YOUTUBE_LOGIN_PASSWORD_XPATH, "V1h@@n1s@R0b0t")
+    __FillElement(By.XPATH, YOUTUBE_LOGIN_PASSWORD_XPATH, PASSWORD)
 
     __ClickElement(By.XPATH, YOUTUBE_LOGIN_NEXT_XPATH)
 
@@ -140,4 +140,3 @@ def Upload_Video(UPLOAD_VIDEO_PATH, TITLE):
     time.sleep(5)
 
     driver.quit()
-
