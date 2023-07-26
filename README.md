@@ -5,8 +5,9 @@ Youtube Downloader Editor Poster
 
 ## Video Explainer
 
-[![vihaanthumbnail](https://github.com/VihaanChhabria/YDEP/assets/72771042/c2b821ad-5865-418d-a85a-72b5dc163135)
-](https://www.youtube.com/watch?v=r9hRTWPkH2A)
+https://www.youtube.com/watch?v=r9hRTWPkH2A
+
+[![thumbnail](https://img.youtube.com/vi/r9hRTWPkH2A/hqdefault.jpg)](https://www.youtube.com/watch?v=r9hRTWPkH2A&t=1s)
 
 ## Disclaimers
 
