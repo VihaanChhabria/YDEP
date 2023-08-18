@@ -25,8 +25,19 @@ https://www.youtube.com/watch?v=r9hRTWPkH2A
 2. Run `python Configer.py`
 
 ## Running
+
 1. Run `python main.py`
 
 ## Example Video
 
 https://github.com/VihaanChhabria/YDEP/assets/72771042/abba176c-be03-4445-89ab-76b0877b7391
+
+## TODO
+
+- Add different default shows
+  - American Housewife
+  - Young Sheldon
+  - Everybody Hates Chris
+  - Marvel Movies
+  - Anime
+- Add different default background clips
