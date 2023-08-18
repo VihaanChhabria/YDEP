@@ -41,3 +41,4 @@ https://github.com/VihaanChhabria/YDEP/assets/72771042/abba176c-be03-4445-89ab-7
   - Marvel Movies
   - Anime
 - Add different default background clips
+- Add memory (Last Clip created is ... then make clip after that)
