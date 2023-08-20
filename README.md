@@ -40,6 +40,7 @@ https://github.com/VihaanChhabria/YDEP/assets/72771042/abba176c-be03-4445-89ab-7
 
 ## TODO
 
+- Add TikTok Posting
 - Add different default shows
   - American Housewife
   - Young Sheldon
