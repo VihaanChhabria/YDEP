@@ -30,7 +30,9 @@ def EditClip(CLIP_MAIN_PATH, thread_number):
     __init()
 
     clipMain = VideoFileClip(CLIP_MAIN_PATH)
+    clipMain = clipMain.fx(vfx.mirror_x)
     clipBack = VideoFileClip(CLIP_BACK_PATH)
+    clipBack = clipBack.fx(vfx.mirror_x)
 
     clipMain = clipMain.subclip(2, math.floor(clipMain.duration))
     clipMain = clipMain.resize(.45)
@@ -62,7 +64,11 @@ def EditClip(CLIP_MAIN_PATH, thread_number):
 
         cut_clips.append([thread_number, clip_final_path, clipsMade])
 
+    clipMain.close()
+    clipBack.close()
+
 def Get_Cut_Clips():
     cut_clips.sort()
     return cut_clips
 
+EditClip("VideoMaker\DownloadClip\Downloaded\FullVideo0.mp4", 4)
