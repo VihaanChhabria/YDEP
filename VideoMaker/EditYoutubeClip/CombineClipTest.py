@@ -71,4 +71,4 @@ def Get_Cut_Clips():
     cut_clips.sort()
     return cut_clips
 
-EditClip("VideoMaker\DownloadClip\Downloaded\FullVideo0.mp4", 4)
+#EditClip("VideoMaker\DownloadClip\Downloaded\FullVideo0.mp4", 4)

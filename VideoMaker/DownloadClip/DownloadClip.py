@@ -1,15 +1,16 @@
 import subprocess
 import configparser
 
-def __init():
-    config = configparser.ConfigParser()
-    config.read_file(open('VideoMaker\DownloadClip\DownloadConfig.ini'))
+def __init(config):
 
     global PLAYLIST_LINK
     PLAYLIST_LINK = config.get('PATHS', 'PLAYLIST_LINK')
 
     global AMOUNT_VIDEO
     AMOUNT_VIDEO = int(config.get('USER CHANGEABLE', 'AMOUNT_VIDEO'))
+
+    global ROUND
+    ROUND = int(config.get('USER CHANGEABLE', 'ROUND'))
 
     global DOWNLOAD_PATH
     DOWNLOAD_PATH = config.get('PATHS', 'DOWNLOAD_PATH')
@@ -44,14 +45,16 @@ def Get_Video(playlist, video):
 
 
 def Download_Video():
-    __init()
-        
-    videoNumber = AMOUNT_VIDEO
 
-    video = 0
+    config = configparser.ConfigParser()
+    config.read_file(open('VideoMaker\DownloadClip\DownloadConfig.ini'))
+    
+    __init(config)
+
+    video = 0 + (AMOUNT_VIDEO*ROUND)
     tryed = 0
 
-    while video < videoNumber:
+    while video < AMOUNT_VIDEO + (AMOUNT_VIDEO*ROUND):
         try:
             Get_Video(playlist, video)
         except:
@@ -59,6 +62,13 @@ def Download_Video():
             tryed = tryed + 1
             continue
         video = video + 1
+
+
+
+    config['USER CHANGEABLE']['ROUND'] = str(ROUND+1)
+
+    with open('VideoMaker\DownloadClip\DownloadConfig.ini', 'w') as configfile:
+        config.write(configfile)
 
 def Get_Downloaded_Videos():
     return downloaded_videos
