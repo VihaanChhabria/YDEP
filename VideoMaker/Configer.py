@@ -1,7 +1,7 @@
 import subprocess
 import sys
 
-libraries = ['configparser', 'getpass4', 'wget', 'selenium', 'pywin32', 'moviepy', 'yt-dlp']
+libraries = ['configparser', 'getpass4', 'wget', 'selenium', 'pywin32', 'moviepy', 'yt-dlp', 'webdriver-manager']
 
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])

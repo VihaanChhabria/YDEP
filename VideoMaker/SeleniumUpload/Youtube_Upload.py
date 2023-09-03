@@ -5,6 +5,7 @@ import time
 import win32com.client
 import configparser
 import os
+from webdriver_manager.chrome import ChromeDriverManager
 
 def __init():
     config = configparser.ConfigParser()
@@ -42,14 +43,11 @@ def __init():
     global VIEW_XPATH
     VIEW_XPATH = config.get('PATHS', 'VIEW_XPATH').format(VIEW)
 
-    global CHROMEDRIVER_PATH
-    CHROMEDRIVER_PATH = config.get('PATHS', 'CHROMEDRIVER_PATH')
-
     global DESCRIPTION
     DESCRIPTION = config.get('USER CHANGEABLE', 'DESCRIPTION')
 
     global driver
-    driver = webdriver.Chrome(CHROMEDRIVER_PATH)
+    driver = webdriver.Chrome(ChromeDriverManager().install())
 
 def __ClickElement(byInput, valueInput):
     try:
@@ -141,6 +139,6 @@ def Upload_Video(UPLOAD_VIDEO_PATH, TITLE):
 
     driver.quit()
 
-#Upload_Video("VideoMaker\EditYoutubeClip\OutputClips\stacked_vid40.mp4", "TEST0")
+#Upload_Video("VideoMaker\EditYoutubeClip\OutputClips\stacked_vid10.mp4", "TEST0")
 #Upload_Video("VideoMaker\EditYoutubeClip\OutputClips\stacked_vid41.mp4", "TEST1")
 #Upload_Video("VideoMaker\EditYoutubeClip\OutputClips\stacked_vid42.mp4", "TEST2")

@@ -9,11 +9,11 @@ def __init():
     config.read_file(open('VideoMaker\EditYoutubeClip\EditClipConfig.ini'))
 
     global DOWNLOAD_PATH
-    DOWNLOAD_PATH = config.get('PATHS', 'DOWNLOAD_PATH')
+    DOWNLOAD_PATH = os.path.abspath(config.get('PATHS', 'DOWNLOAD_PATH'))
     DOWNLOAD_PATH = r"{}".format(DOWNLOAD_PATH)
 
     global CLIP_BACK_PATH
-    CLIP_BACK_PATH = config.get('PATHS', 'CLIP_BACK_PATH')
+    CLIP_BACK_PATH = os.path.abspath(config.get('PATHS', 'CLIP_BACK_PATH'))
 
     global cut_clips
     cut_clips = []

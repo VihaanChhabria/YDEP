@@ -1,5 +1,6 @@
 import subprocess
 import configparser
+import os
 
 def __init(config):
 
@@ -13,7 +14,7 @@ def __init(config):
     ROUND = int(config.get('USER CHANGEABLE', 'ROUND'))
 
     global DOWNLOAD_PATH
-    DOWNLOAD_PATH = config.get('PATHS', 'DOWNLOAD_PATH')
+    DOWNLOAD_PATH = os.path.abspath(config.get('PATHS', 'DOWNLOAD_PATH'))
 
     global PLAYLISTURL_FILE
     PLAYLISTURL_FILE = config.get('PATHS', 'PLAYLISTURL_PATH')
